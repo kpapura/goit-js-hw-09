@@ -16,12 +16,12 @@ function onHandSubmit(e) {
   for (let position = 1; position <= amount; position++) {
     createPromise(position, delay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(
+        Notiflix(
           `✅ Fulfilled promise ${position} in ${delay}ms`
         );
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(
+        Notiflix(
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
