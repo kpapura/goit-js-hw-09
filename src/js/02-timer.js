@@ -35,15 +35,13 @@ function convertMs(ms) {
   const day = hour * 24;
 
   // Remaining days
-  const days = addLeadingZero(Math.floor(ms / day));
+  const days = Math.floor(ms / day);
   // Remaining hours
-  const hours = addLeadingZero(Math.floor((ms % day) / hour));
+  const hours = Math.floor((ms % day) / hour);
   // Remaining minutes
-  const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
+  const minutes = Math.floor(((ms % day) % hour) / minute);
   // Remaining seconds
-  const seconds = addLeadingZero(
-    Math.floor((((ms % day) % hour) % minute) / second)
-  );
+  const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
 }
@@ -58,10 +56,10 @@ function updateTime() {
     inputEl.disabled = false;
     return;
   }
-  daysCounter.textContent = days;
-  hoursCounter.textContent = hours;
-  minutesCounter.textContent = minutes;
-  secondsCounter.textContent = seconds;
+  daysCounter.textContent = addLeadingZero(days);
+  hoursCounter.textContent = addLeadingZero(hours);
+  minutesCounter.textContent = addLeadingZero(minutes);
+  secondsCounter.textContent = addLeadingZero(seconds);
 }
 
 startBtn.addEventListener('click', handleStart);
